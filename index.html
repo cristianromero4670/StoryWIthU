@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collage minimalista</title>
+    <link rel="stylesheet" href="life.css" />
+  </head>
+  <body>
+    <main class="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="collage collage--mosaic" id="collage"></div>
+      </div>
+
+      <section class="hero__content">
+        <p class="eyebrow">storywithu</p>
+        <p class="subtitle">
+          Diseño minimalista con tonos <strong>rosa tenue</strong>, <strong>nude</strong> y
+          <strong>blanco</strong>, ideal para mantener elegancia y buena lectura.
+        </p>
+        <p class="reveal__hint" id="reveal-hint">Tip: haz click para iluminar el mosaico y luego haz click en una foto para verla completa.</p>
+      </section>
+    </main>
+
+    <aside class="photo-preview" id="photo-preview" aria-live="polite">
+      <img id="preview-image" alt="Foto ampliada del collage" />
+      <p id="preview-description"></p>
+    </aside>
+
+    <script src="life.js"></script>
+  </body>
+</html>

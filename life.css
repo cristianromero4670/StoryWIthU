@@ -1,0 +1,189 @@
+:root {
+  --pink-soft: #f6d8e4;
+  --nude: #ecd8c6;
+  --text-main: #7f5f6f;
+  --text-soft: #9a7f8d;
+  --card: rgba(255, 255, 255, 0.72);
+  --overlay: rgba(255, 255, 255, 0.36);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--text-main);
+  background: linear-gradient(135deg, #fffafc 0%, #fdf7f2 100%);
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: -1.2rem;
+  z-index: 0;
+}
+
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(246, 216, 228, 0.35), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(236, 216, 198, 0.35), transparent 52%),
+    var(--overlay);
+  transition: opacity 320ms ease;
+  pointer-events: none;
+}
+
+.collage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 48px;
+  gap: 0.55rem;
+  padding: 0.65rem;
+  filter: blur(4px) saturate(0.92) brightness(1.05);
+  transform: scale(1.03);
+  transition: filter 320ms ease, transform 320ms ease;
+  z-index: 1;
+}
+
+.photo {
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 24px rgba(163, 123, 142, 0.12);
+}
+
+
+body:not(.is-revealed) .photo {
+  pointer-events: none;
+  cursor: default;
+}
+
+.hero__content {
+  width: min(640px, calc(100% - 2rem));
+  padding: clamp(1.1rem, 2.4vw, 1.8rem);
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  text-align: center;
+  transition: opacity 320ms ease, transform 320ms ease;
+  z-index: 2;
+  position: relative;
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--text-soft);
+}
+
+.subtitle {
+  margin: 0.75rem 0 0;
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+  line-height: 1.65;
+  color: #967685;
+}
+
+.subtitle strong {
+  color: #855e72;
+  font-weight: 600;
+}
+
+.reveal__hint {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: #997b8a;
+  font-weight: 500;
+}
+
+.photo-preview {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: min(380px, calc(100% - 2rem));
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 0.75rem;
+  box-shadow: 0 18px 34px rgba(96, 65, 80, 0.2);
+  backdrop-filter: blur(9px);
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 240ms ease, transform 240ms ease;
+  z-index: 20;
+}
+
+.photo-preview img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.photo-preview p {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #7a5868;
+}
+
+.photo-preview.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.is-revealed .hero__bg::after {
+  opacity: 0.12;
+}
+
+body.is-revealed .collage {
+  filter: blur(0px) saturate(1.15) brightness(1.25);
+  transform: scale(1);
+}
+
+body.is-revealed 
+body:not(.is-revealed) .photo {
+  pointer-events: none;
+  cursor: default;
+}
+
+.hero__content {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.96);
+}
+
+@media (max-width: 680px) {
+  .collage {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 56px;
+  }
+
+  .photo-preview {
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+  }
+}
