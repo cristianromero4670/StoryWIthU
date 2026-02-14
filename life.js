@@ -37,6 +37,7 @@ const hero = document.querySelector(".hero");
 const preview = document.querySelector("#photo-preview");
 const previewImage = document.querySelector("#preview-image");
 const previewDescription = document.querySelector("#preview-description");
+const previewSpotify = document.querySelector("#preview-spotify");
 
 function renderMinimalMosaic() {
   collage.innerHTML = "";
@@ -55,21 +56,23 @@ function renderMinimalMosaic() {
     tile.addEventListener("click", (event) => {
       if (!document.body.classList.contains("is-revealed")) return;
       event.stopPropagation();
-      showPreview(item.url, item.description);
+      showPreview(item.url, item.description, item.spotify);
     });
 
     collage.append(tile);
   }
 }
 
-function showPreview(url, description) {
+function showPreview(url, description, spotifyUrl) {
   previewImage.src = url;
   previewDescription.textContent = description;
+  previewSpotify.src = spotifyUrl;
   preview.classList.add("is-visible");
 }
 
 function hidePreview() {
   preview.classList.remove("is-visible");
+  previewSpotify.src = "";
 }
 
 function toggleReveal(event) {
