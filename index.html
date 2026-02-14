@@ -15,11 +15,23 @@
       <section class="hero__content">
         <p class="eyebrow">storywithu</p>
         <p class="subtitle">
-          te vi y me sacaste una sonrisa 
+          Diseño minimalista con tonos <strong>rosa tenue</strong>, <strong>nude</strong> y
+          <strong>blanco</strong>, ideal para mantener elegancia y buena lectura.
         </p>
-        <p class="reveal__hint" id="reveal-hint">Tip: haz click en la pantalla si quieres conocer por que escogi cada foto.</p>
+        <p class="reveal__hint" id="reveal-hint">Tip: haz click para iluminar el mosaico y luego haz click en una foto para verla completa.</p>
       </section>
     </main>
+
+    <aside class="photo-preview" id="photo-preview" aria-live="polite">
+      <img id="preview-image" alt="Foto ampliada del collage" />
+      <p id="preview-description"></p>
+      <iframe
+        id="preview-spotify"
+        title="Canción relacionada"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
+    </aside>
 
     <script src="life.js"></script>
   </body>
