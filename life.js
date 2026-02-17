@@ -39,6 +39,10 @@ const previewImage = document.querySelector("#preview-image");
 const previewDescription = document.querySelector("#preview-description");
 const previewSpotify = document.querySelector("#preview-spotify");
 
+const letterTrigger = document.querySelector("#letter-trigger");
+const letterModal = document.querySelector("#letter-modal");
+const letterClose = document.querySelector("#letter-close");
+
 function renderMinimalMosaic() {
   collage.innerHTML = "";
 
@@ -85,6 +89,25 @@ function toggleReveal(event) {
 
   if (!revealed) hidePreview();
 }
+
+
+function openLetter(event) {
+  event.stopPropagation();
+  letterModal.classList.add("is-open");
+  letterModal.setAttribute("aria-hidden", "false");
+}
+
+function closeLetter(event) {
+  if (event) event.stopPropagation();
+  letterModal.classList.remove("is-open");
+  letterModal.setAttribute("aria-hidden", "true");
+}
+
+letterTrigger.addEventListener("click", openLetter);
+letterClose.addEventListener("click", closeLetter);
+letterModal.addEventListener("click", (event) => {
+  if (event.target === letterModal) closeLetter();
+});
 
 hero.addEventListener("click", toggleReveal);
 preview.addEventListener("click", (event) => event.stopPropagation());

@@ -12,12 +12,9 @@
         <div class="collage collage--mosaic" id="collage"></div>
       </div>
 
-      <section class="hero__content">
-        <p class="eyebrow">My storywithu</p>
-        <p class="subtitle">
-          <strong>Tu eres mi San valentin</strong>
-        </p>
-      </section>
+      <button class="letter-trigger" id="letter-trigger" type="button">
+        <span class="letter-trigger__eyebrow">STORY WITH U</span>
+      </button>
     </main>
 
     <aside class="photo-preview" id="photo-preview" aria-live="polite">
@@ -30,6 +27,21 @@
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       ></iframe>
     </aside>
+
+    <section class="letter-modal" id="letter-modal" aria-hidden="true">
+      <div class="letter-envelope" id="letter-envelope">
+        <button class="letter-close" id="letter-close" type="button" aria-label="Cerrar carta">×</button>
+        <div class="envelope-back"></div>
+        <div class="envelope-flap"></div>
+        <article class="letter-sheet">
+          <h3>Para Reny </h3>
+          <p>
+            Comenzo solo con canciones pero ahora hay mucho que me recuerda a ti
+          </p>
+          <p>Te quiero mocosa</p>
+        </article>
+      </div>
+    </section>
 
     <script src="life.js"></script>
   </body>
